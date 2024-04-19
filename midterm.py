@@ -45,46 +45,49 @@ class Star_Cinema:
         cls.hall_list.append(hall)
 
 
-def main():
-    hall = Hall(rows=5, cols=10, hall_no=1)
-    hall.entry_show(id='1', movie_name='Rajkumar', time='7:00 PM')
-    hall.entry_show(id='2', movie_name='Priotoma', time='9:00 PM')
-    Star_Cinema.entry_hall(hall)
+class Cinema_System:
+    def __init__(self):
+        self.hall = Hall(rows=5, cols=10, hall_no=1)
+        self.hall.entry_show(id='1', movie_name='Rajkumar', time='7:00 PM')
+        self.hall.entry_show(id='2', movie_name='Priotoma', time='9:00 PM')
+        Star_Cinema.entry_hall(self.hall)
 
+    def run(self):
+        while True:
+            print("\nOptions:")
+            print("1. View all shows today")
+            print("2. View available seats")
+            print("3. Book ticket")
+            print("4. Exit")
 
-    while True:
-        print("\nOptions:")
-        print("1. View all shows today")
-        print("2. View available seats")
-        print("3. Book ticket")
-        print("4. Exit")
+            option = input("Enter option: ")
 
-        option = input("Enter option: ")
-
-        if option == '1':
-            hall.view_show_list()
-        elif option == '2':
-            id = input("Enter show ID: ")
-            hall.view_available_seats(id)
-        elif option == '3':
-            id = input("Enter show ID: ")
-            num_seats = int(input("Enter number of seats: "))
-            seat_list = []
-            for _ in range(num_seats):
-                row = int(input("Enter row: "))
-                col = int(input("Enter column: "))
-                seat_list.append((row, col))
-            try:
-                hall.book_seats(id, seat_list)
-                print("Tickets booked successfully!")
-            except ValueError as e:
-                print("Error:", e)
-        elif option == '4':
-            print("Exiting...")
-            break
-        else:
-            print("Invalid option. Please try again.")
+            if option == '1':
+                self.hall.view_show_list()
+            elif option == '2':
+                id = input("Enter show ID: ")
+                self.hall.view_available_seats(id)
+            elif option == '3':
+                id = input("Enter show ID: ")
+                num_seats = int(input("Enter number of seats: "))
+                seat_list = []
+                for _ in range(num_seats):
+                    row = int(input("Enter row: "))
+                    col = int(input("Enter column: "))
+                    seat_list.append((row, col))
+                try:
+                    self.hall.book_seats(id, seat_list)
+                    print("Tickets booked successfully!")
+                except ValueError as e:
+                    print("Error:", e)
+            elif option == '4':
+                print("Exiting...")
+                break
+            else:
+                print("Invalid option. Please try again.")
 
 if __name__ == "__main__":
-    main()
+    cinema_Hall_system = Cinema_System()
+    cinema_Hall_system.run()
+
 
