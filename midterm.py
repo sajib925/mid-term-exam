@@ -47,8 +47,8 @@ class Star_Cinema:
 
 def main():
     hall = Hall(rows=5, cols=10, hall_no=1)
-    hall.entry_show(id='1', movie_name='The Matrix', time='7:00 PM')
-    hall.entry_show(id='2', movie_name='Inception', time='9:00 PM')
+    hall.entry_show(id='1', movie_name='Rajkumar', time='7:00 PM')
+    hall.entry_show(id='2', movie_name='Priotoma', time='9:00 PM')
     Star_Cinema.entry_hall(hall)
 
 
